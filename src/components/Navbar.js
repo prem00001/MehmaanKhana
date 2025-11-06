@@ -12,7 +12,7 @@ function Navbar() {
         <Box display="flex" alignItems="center">
           <HotelIcon fontSize="large" sx={{ marginRight: 1, color: "#f1c40f" }} />
           <Typography variant="h5" fontWeight="bold">
-            Rovero Hotel
+          MehmaanKhana
           </Typography>
         </Box>
 

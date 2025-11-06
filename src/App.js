@@ -14,6 +14,8 @@ import Booking from "./pages/Booking";
 import Login from "./pages/Login";
 import BookDetails from "./pages/BookDetails";
 import Payment from "./pages/Payment";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -27,8 +29,8 @@ function AppContent() {
   const location = useLocation();
 
   // Hide Navbar & Footer on these pages
-  const hideNavbarFooter = ["/login", "/booking", "/BookDetails", "/Payment"].includes(location.pathname);
-  const hideOnlyPayment = ["/Payment"].includes(location.pathname);
+  const hideNavbarFooter = ["/login", "/booking", "/book-details", "/payment", "/admin/login", "/admin"].includes(location.pathname);
+  const hideOnlyPayment = ["/payment"].includes(location.pathname);
 
   return (
     <>
@@ -41,8 +43,10 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/BookDetails" element={<BookDetails />} />
-        <Route path="/Payment" element={<Payment />} />
+        <Route path="/book-details" element={<BookDetails />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
 
         {/* Footer Pages */}
         <Route path="/support" element={<Support />} />

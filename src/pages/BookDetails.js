@@ -20,13 +20,34 @@ function BookDetails() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!city) newErrors.city = "Please select a city";
+    if (!checkIn) newErrors.checkIn = "Please select check-in date";
+    if (!checkOut) newErrors.checkOut = "Please select check-out date";
+    if (!guests || guests < 1) newErrors.guests = "Please enter number of guests";
+    
+    // Check if check-out is after check-in
+    if (checkIn && checkOut && new Date(checkOut) <= new Date(checkIn)) {
+      newErrors.checkOut = "Check-out date must be after check-in date";
+    }
+    
+    // Check if check-in is not in the past
+    if (checkIn && new Date(checkIn) < new Date().setHours(0, 0, 0, 0)) {
+      newErrors.checkIn = "Check-in date cannot be in the past";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handlePayment = () => {
-    if (!city || !checkIn || !checkOut || !guests) {
-      alert("Please fill in all details before proceeding to payment.");
-      return;
+    if (validateForm()) {
+      navigate(`/payment?city=${city}&room=${room}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`);
     }
-    navigate(`/payment?city=${city}&room=${room}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`);
   };
 
   return (
@@ -66,6 +87,8 @@ function BookDetails() {
             fullWidth
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            error={!!errors.city}
+            helperText={errors.city}
             sx={{ mb: 2 }}
           >
             {topCities.map((cityOption) => (
@@ -86,6 +109,8 @@ function BookDetails() {
           fullWidth
           value={checkIn}
           onChange={(e) => setCheckIn(e.target.value)}
+          error={!!errors.checkIn}
+          helperText={errors.checkIn}
           InputLabelProps={{ shrink: true }}
           sx={{ mb: 2 }}
         />
@@ -95,6 +120,8 @@ function BookDetails() {
           fullWidth
           value={checkOut}
           onChange={(e) => setCheckOut(e.target.value)}
+          error={!!errors.checkOut}
+          helperText={errors.checkOut}
           InputLabelProps={{ shrink: true }}
           sx={{ mb: 2 }}
         />
@@ -104,6 +131,9 @@ function BookDetails() {
           fullWidth
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
+          error={!!errors.guests}
+          helperText={errors.guests}
+          inputProps={{ min: 1, max: 10 }}
           sx={{ mb: 2 }}
         />
         <Button

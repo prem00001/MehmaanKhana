@@ -29,17 +29,17 @@ function Contact() {
         <Grid item xs={12} sm={4} textAlign="center">
           <EmailIcon sx={{ fontSize: 40, color: "#f1c40f" }} />
           <Typography variant="h6">Email</Typography>
-          <Typography variant="body2">info@roverohotel.com</Typography>
+          <Typography variant="body2">info@MehmaanKhana.com</Typography>
         </Grid>
         <Grid item xs={12} sm={4} textAlign="center">
           <PhoneIcon sx={{ fontSize: 40, color: "#f1c40f" }} />
           <Typography variant="h6">Phone</Typography>
-          <Typography variant="body2">+1 (234) 567-890</Typography>
+          <Typography variant="body2">+91 99822 96888</Typography>
         </Grid>
         <Grid item xs={12} sm={4} textAlign="center">
           <LocationOnIcon sx={{ fontSize: 40, color: "#f1c40f" }} />
           <Typography variant="h6">Location</Typography>
-          <Typography variant="body2">123 Luxury St, New York, USA</Typography>
+          <Typography variant="body2">Pichola, Udaipur-Rajasthan, 313001, INDIA</Typography>
         </Grid>
       </Grid>
     </Container>

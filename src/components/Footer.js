@@ -63,7 +63,7 @@ function Footer() {
 
       {/* Copyright */}
       <Typography variant="body2" textAlign="center">
-        © {new Date().getFullYear()} Rovero Hotel. All rights reserved.
+        © {new Date().getFullYear()} MehmaanKhana. All rights reserved.
       </Typography>
 
       {/* Social Media Icons */}
